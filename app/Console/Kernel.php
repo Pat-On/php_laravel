@@ -19,7 +19,11 @@ class Kernel extends ConsoleKernel
     }
 
     /**
-     * Register the commands for the application.
+     * Register the commands for the application. 
+     * 
+     *  Loading them basically 
+     * 
+     * in older version you should add them manually here
      *
      * @return void
      */
