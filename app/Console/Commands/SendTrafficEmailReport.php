@@ -35,9 +35,15 @@ class SendTrafficEmailReport extends Command
 
         // place to do the magic
 
-        $count = 150;
+        // $count = 150;
 
-        Mail::to('patryk.r.nowak@gmail.com')->send(new SendReport($count));
+        
+        $usersCount = \DB::table('users')
+            ->whereRaw('Date(created_at) = CURDATE()')
+            ->count();
+
+
+        Mail::to('patryk.r.nowak@gmail.com')->send(new SendReport($usersCount));
 
         // return Command::SUCCESS;
     }
