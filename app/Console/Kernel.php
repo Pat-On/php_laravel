@@ -17,6 +17,8 @@ class Kernel extends ConsoleKernel
     {
         // repeating it every minute
         // $schedule->command('sendreport:name')->everyMinute();
+        // $schedule->command('inactive:user')->everyMinute();
+
     }
 
     /**
