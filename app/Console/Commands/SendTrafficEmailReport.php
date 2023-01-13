@@ -37,7 +37,7 @@ class SendTrafficEmailReport extends Command
 
         // $count = 150;
 
-        
+        // global namespace - \ 
         $usersCount = \DB::table('users')
             ->whereRaw('Date(created_at) = CURDATE()')
             ->count();
