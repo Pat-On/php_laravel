@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.app')
 
+@section('content')
+    <h1>Post Page {{$id}}</h1>
 
-
-<head>
-    <title>Laravel</title>
-</head>
-
-<body>
-    <div class="container">
-
-
-        <h1>Post Page {{$id}}</h1>
-
-    </div>
-</body>
-
-</html>
+@endSection
