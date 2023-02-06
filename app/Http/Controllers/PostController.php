@@ -93,9 +93,9 @@ class PostController extends Controller
     // CUSTOM CONTROLLER
 
     public function contact(){
+        $people = ['Edwin', 'Jose', 'James', "Peter", 'Maria', 'Patryk'];
 
-
-        return view('contact');
+        return view('contact', compact('people'));
     }
 
     // with compact is much easier to pass multiple params
