@@ -37,7 +37,7 @@ Route::get('/', function () {
 // });
 
 
-Route::get('/post/{id}', '\App\Http\Controllers\PostController@index');
+// Route::get('/post/{id}', '\App\Http\Controllers\PostController@index');
 // or
 Route::get('/post2', [PostController::class, 'index']);
 
@@ -50,6 +50,8 @@ Route::get("admin/posts/example", array('as' => 'admin.home', function () {
     return $url;
 }));
 
-Route::resource('posts', '\App\Http\Controllers\PostController'); // crud
+// Route::resource('posts', '\App\Http\Controllers\PostController'); // crud
 
 Route::get('/contact',  [PostController::class, 'contact']);
+
+Route::get('post/{id}', [PostController::class, 'show_post']);

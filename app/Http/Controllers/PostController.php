@@ -98,7 +98,13 @@ class PostController extends Controller
         return view('contact');
     }
 
+    // with compact is much easier to pass multiple params
+    public function show_post($id) {
 
+        // return view('post')->with('id', $id);
+
+        return view('post', compact('id'));
+    }
 
 }
 
