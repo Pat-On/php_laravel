@@ -1,6 +1,7 @@
 <?php
 
 // namespace simplifying is just scope
+
 namespace App\Http\Controllers;
 
 // use - import specific class or namespace to this place

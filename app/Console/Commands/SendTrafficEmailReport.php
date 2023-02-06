@@ -6,7 +6,6 @@ namespace App\Console\Commands;
 
 use App\Mail\SendReport;
 use Illuminate\Console\Command;
-
 use Illuminate\Support\Facades\Mail;
 
 class SendTrafficEmailReport extends Command
@@ -32,16 +31,14 @@ class SendTrafficEmailReport extends Command
      */
     public function handle()
     {
-
         // place to do the magic
 
         // $count = 150;
 
-        // global namespace - \ 
+        // global namespace - \
         $usersCount = \DB::table('users')
             ->whereRaw('Date(created_at) = CURDATE()')
             ->count();
-
 
         Mail::to('patryk.r.nowak@gmail.com')->send(new SendReport($usersCount));
 

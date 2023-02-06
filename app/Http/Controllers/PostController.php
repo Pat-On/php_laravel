@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-// php artisan make:controller --resource PostController2 
+// php artisan make:controller --resource PostController2
 
 class PostController extends Controller
 {
@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index($id)
     {
         //
-        return "it is working" . $id;
+        return 'it is working'.$id;
     }
 
     /**
@@ -49,7 +49,7 @@ class PostController extends Controller
     public function show($id)
     {
         //
-        return "This is show method";
+        return 'This is show method';
     }
 
     /**
@@ -84,28 +84,22 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
-
-
-
-
     }
 
     // CUSTOM CONTROLLER
 
-    public function contact(){
-        $people = ['Edwin', 'Jose', 'James', "Peter", 'Maria', 'Patryk'];
+    public function contact()
+    {
+        $people = ['Edwin', 'Jose', 'James', 'Peter', 'Maria', 'Patryk'];
 
         return view('contact', compact('people'));
     }
 
     // with compact is much easier to pass multiple params
-    public function show_post($id) {
-
+    public function show_post($id)
+    {
         // return view('post')->with('id', $id);
 
         return view('post', compact('id'));
     }
-
 }
-
-

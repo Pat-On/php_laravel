@@ -15,21 +15,19 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
         // cron jobs
         // * * * * * php ~/code/scheduler/artisan schedule:run >> /dev/null 2>&1
 
         // repeating it every minute
         // $schedule->command('sendreport:name')->everyMinute();
         // $schedule->command('inactive:user')->everyMinute();
-
     }
 
     /**
-     * Register the commands for the application. 
-     * 
-     *  Loading them basically 
-     * 
+     * Register the commands for the application.
+     *
+     *  Loading them basically
+     *
      * in older version you should add them manually here
      *
      * @return void

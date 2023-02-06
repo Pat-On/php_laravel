@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Route;
 
 // use App\Http\Controllers as C; https://www.udemy.com/course/php-with-laravel-for-beginners-become-a-master-in-laravel/learn/lecture/22307374#questions/14999442
 
@@ -36,7 +36,6 @@ Route::get('/', function () {
 //     return "$id $name";
 // });
 
-
 // Route::get('/post/{id}', '\App\Http\Controllers\PostController@index');
 // or
 Route::get('/post2', [PostController::class, 'index']);
@@ -45,13 +44,29 @@ Route::get('/post2', [PostController::class, 'index']);
 // Route::get('/', [EdwinsController::class, 'index']);
 
 // naming routes
-Route::get("admin/posts/example", array('as' => 'admin.home', function () {
+Route::get('admin/posts/example', ['as' => 'admin.home', function () {
     $url = route('admin.home');
+
     return $url;
-}));
+}]);
 
 // Route::resource('posts', '\App\Http\Controllers\PostController'); // crud
 
-Route::get('/contact',  [PostController::class, 'contact']);
+Route::get('/contact', [PostController::class, 'contact']);
 
 Route::get('post/{id}', [PostController::class, 'show_post']);
+
+// demo
+Route::get('/insert', function () {
+    DB::insert('INSERT INTO posts(title, content) value(?, ?)', ['PHP with Laravel', 'Laravel is the best']);
+});
+Route::get('/read', function () {
+    $results = DB::select('SELECT * from posts');
+    // std class object - generic empty class
+
+    return var_dump($results);
+
+    foreach ($results as $post) {
+        return $post->title;
+    }
+});
