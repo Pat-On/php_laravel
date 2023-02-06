@@ -51,3 +51,5 @@ Route::get("admin/posts/example", array('as' => 'admin.home', function () {
 }));
 
 Route::resource('posts', '\App\Http\Controllers\PostController'); // crud
+
+Route::get('/contact',  [PostController::class, 'contact']);

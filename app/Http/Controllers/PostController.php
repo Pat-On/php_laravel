@@ -84,5 +84,22 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+
+
+
+
     }
+
+    // CUSTOM CONTROLLER
+
+    public function contact(){
+
+
+        return view('contact');
+    }
+
+
+
 }
+
+
