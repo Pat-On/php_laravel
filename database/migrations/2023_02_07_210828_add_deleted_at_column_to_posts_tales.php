@@ -1,11 +1,10 @@
 <?php
 
-// php artisan make:migration create_posts_table --create="posts"
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+//php artisan make:migration add_deleted_at_column_to_posts_tales --table=posts
 return new class extends Migration
 {
     /**
@@ -15,13 +14,11 @@ return new class extends Migration
      */
     public function up()
     {
-        // dependency injection
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->text('content');
-            $table->smallInteger('is_admin')->default(0);
-            $table->timestamps();
+        Schema::table('posts', function (Blueprint $table) {
+            //
+
+            $table->softDeletes();
+
         });
     }
 
@@ -32,6 +29,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::table('posts', function (Blueprint $table) {
+            //
+            $table->dropColumn('deleted_at');
+        });
     }
 };
