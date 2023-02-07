@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 // use App\Http\Controllers as C; https://www.udemy.com/course/php-with-laravel-for-beginners-become-a-master-in-laravel/learn/lecture/22307374#questions/14999442
 
@@ -57,16 +58,27 @@ Route::get('/contact', [PostController::class, 'contact']);
 Route::get('post/{id}', [PostController::class, 'show_post']);
 
 // demo
-Route::get('/insert', function () {
-    DB::insert('INSERT INTO posts(title, content) value(?, ?)', ['PHP with Laravel', 'Laravel is the best']);
-});
-Route::get('/read', function () {
-    $results = DB::select('SELECT * from posts');
-    // std class object - generic empty class
+// Route::get('/insert', function () {
+//     DB::insert('INSERT INTO posts(title, content) value(?, ?)', ['PHP with Laravel', 'Laravel is the best']);
+// });
+// Route::get('/read', function () {
+//     $results = DB::select('SELECT * from posts');
+//     // std class object - generic empty class
 
-    return var_dump($results);
+//     return var_dump($results);
 
-    foreach ($results as $post) {
-        return $post->title;
-    }
+//     foreach ($results as $post) {
+//         return $post->title;
+//     }
+// });
+
+
+/*
+        ELOQUENT 
+*/
+Route::get('/find', function(){
+    $posts = Post::all();
+
+    return $posts;
+
 });
