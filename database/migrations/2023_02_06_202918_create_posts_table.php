@@ -18,6 +18,10 @@ return new class extends Migration
         // dependency injection
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            // one to one relation
+            $table->integer('user_id')->unsigned();
+            // $table->unsignedInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
             $table->text('content');
             $table->smallInteger('is_admin')->default(0);
