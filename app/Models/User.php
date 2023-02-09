@@ -55,7 +55,14 @@ class User extends Authenticatable
     }
 
     // many to many
-    public function roles(){
-        return $this->belongsToMany('App\Models\Role');
+    public function roles()
+    {
+
+        // withPivot is defining what we are going to bring from database from the pivot - so we need to inform model
+        return $this->belongsToMany('App\Models\Role')->withPivot('created_at', 'user_id', 'role_id');
+
+        // if you are not follow convention of php you will have to use the thing bellow:
+        // to customize tables name and columns follow the format bellow
+        // return $this->belongsToMany('App\Models\Role', 'role_user', 'user_id', 'role_id');
     }
 }

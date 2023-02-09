@@ -43,16 +43,24 @@ Route::get('/posts/{id}', function ($id) {
 });
 
 // many to many
-Route::get('user/{id}/role', function($id){
+Route::get('user/{id}/role', function ($id) {
     // $user = User::find($id);
-
-    
 
     // foreach($user->roles as $role){
     //     return $role->name;
     // }
 
     $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
-    return $user;
 
+    return $user;
+});
+
+// accessing intermediate table - pivot table - lookup table! o!
+
+Route::get('user/pivot/{id}', function ($id) {
+    $user = User::find($id);
+
+    foreach ($user->roles as $role) {
+        echo $role->pivot;
+    }
 });
