@@ -42,9 +42,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     // one to one relationship
-    public function post(){
+    public function post()
+    {
         return $this->hasOne('App\Models\Post', 'user_id');
+    }
+
+    // one to many
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
+
+    // many to many
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role');
     }
 }

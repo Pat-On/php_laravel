@@ -91,7 +91,7 @@ Route::get('findwhere', function () {
 // Sometimes you may wish to throw an exception if a model is not found. This is particularly useful in routes or controllers. The findOrFail and firstOrFail methods will retrieve the first result of the query; however, if no result is found, an Illuminate\Database\Eloquent\ModelNotFoundException will be thrown:
 Route::get('/findmore', function () {
     //
-     $posts = Post::findOrFail(3);
+    $posts = Post::findOrFail(3);
 
     // $posts = Post::where('id', '<', 50)->firstOrFail();
 
@@ -122,26 +122,24 @@ Route::get('/basicinsert', function () {
 
 // mass assignment operation - Laravel/eloquent is blocking it
 Route::get('/create', function () {
-    Post::create(['title' => 'the create method', 'content' => 'wow I am learning! I love learning!', 'is_admin'=> 0]);
+    Post::create(['title' => 'the create method', 'content' => 'wow I am learning! I love learning!', 'is_admin' => 0]);
 });
 
 Route::get('/update', function () {
     Post::where('id', 2)->where('is_admin', 0)->update(['title' => 'Updated title']);
 });
 
-Route::get('/delete', function() {
-
+Route::get('/delete', function () {
     $post = Post::find(1);
 
     $post->delete();
 });
 
-
-Route::get('/delete2', function(){
+Route::get('/delete2', function () {
     Post::destroy(2);
 });
 
-Route::get('/delete3', function(){
+Route::get('/delete3', function () {
     Post::destroy([4, 5]);
 
     // Post::where('is_admin', 0)->delete();
@@ -149,12 +147,12 @@ Route::get('/delete3', function(){
 
 // soft delete
 
-Route::get('/softdelete', function(){
+Route::get('/softdelete', function () {
     Post::find(2)->delete();
-    // it is going to add the stamp to deleted_at and will not pul it 
+    // it is going to add the stamp to deleted_at and will not pul it
 });
 
-Route::get('/readsoftdelete', function(){
+Route::get('/readsoftdelete', function () {
     // $post = Post::find(1);
     // return $post;
 
@@ -162,16 +160,16 @@ Route::get('/readsoftdelete', function(){
     // return $post;
 
     $post = Post::onlyTrashed()->get();
-    return $post;
 
+    return $post;
 });
 
-Route::get("/restore", function(){
+Route::get('/restore', function () {
     Post::withTrashed()->where('is_admin', 0)->restore();
 });
 
 // deleting items permanently
 
-Route::get('/forcedelete', function(){
+Route::get('/forcedelete', function () {
     Post::onlyTrashed()->forceDelete();
 });
