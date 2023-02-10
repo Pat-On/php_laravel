@@ -3,6 +3,7 @@
 use App\Models\Country;
 use App\Models\Photo;
 use App\Models\Video;
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -111,4 +112,13 @@ Route::get('post/{id}/tag', function($id) {
     foreach($post->tags as $tag){
         echo $tag;
     }
+});
+
+// retrieving owner <- interesting!
+Route::get('/tag/{id}/post', function($id){
+    $tag = Tag::find($id);
+
+    foreach($tag->posts as $post){
+        echo $post;
+    } 
 });
