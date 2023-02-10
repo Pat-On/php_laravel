@@ -2,6 +2,7 @@
 
 use App\Models\Country;
 use App\Models\Photo;
+use App\Models\Video;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -100,4 +101,14 @@ Route::get('photo/{id}/post', function ($id) {
     $imageable = $photo;
 
     return $imageable;
+});
+
+
+// Polymorphic relation many to many
+Route::get('post/{id}/tag', function($id) {
+    $post = Post::find($id);
+
+    foreach($post->tags as $tag){
+        echo $tag;
+    }
 });
