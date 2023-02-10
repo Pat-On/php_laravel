@@ -57,7 +57,6 @@ class User extends Authenticatable
     // many to many
     public function roles()
     {
-
         // withPivot is defining what we are going to bring from database from the pivot - so we need to inform model
         return $this->belongsToMany('App\Models\Role')->withPivot('created_at', 'user_id', 'role_id');
 
@@ -65,4 +64,10 @@ class User extends Authenticatable
         // to customize tables name and columns follow the format bellow
         // return $this->belongsToMany('App\Models\Role', 'role_user', 'user_id', 'role_id');
     }
+
+        // polymorphic relationship
+        public function photos()
+        {
+            return $this->morphMany('\App\Models\Photo', 'imageable');
+        }
 }

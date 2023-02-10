@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\Country;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -66,11 +66,30 @@ Route::get('user/pivot/{id}', function ($id) {
     }
 });
 
-
-// has many 
-Route::get('/user/country/{id}', function($id){
+// has many
+Route::get('/user/country/{id}', function ($id) {
     $country = Country::find($id);
-    foreach($country->posts as $post){
+    foreach ($country->posts as $post) {
         echo $post;
+    }
+});
+
+
+// polymorphic relations 
+
+Route::get('user/{id}/photos', function($id){
+    $user = User::find($id);
+
+    foreach($user->photos as $photo){
+        echo $photo;
+    }
+});
+
+
+Route::get('post/{id}/photos', function($id){
+    $post = Post::find($id);
+
+    foreach($post->photos as $photo){
+        echo $photo;
     }
 });
