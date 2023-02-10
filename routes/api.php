@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Country;
+use App\Models\Photo;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -74,22 +75,29 @@ Route::get('/user/country/{id}', function ($id) {
     }
 });
 
+// polymorphic relations
 
-// polymorphic relations 
-
-Route::get('user/{id}/photos', function($id){
+Route::get('user/{id}/photos', function ($id) {
     $user = User::find($id);
 
-    foreach($user->photos as $photo){
+    foreach ($user->photos as $photo) {
         echo $photo;
     }
 });
 
-
-Route::get('post/{id}/photos', function($id){
+Route::get('post/{id}/photos', function ($id) {
     $post = Post::find($id);
 
-    foreach($post->photos as $photo){
+    foreach ($post->photos as $photo) {
         echo $photo;
     }
+});
+
+// Polymorphic relation the inverse
+Route::get('photo/{id}/post', function ($id) {
+    $photo = Photo::findOrFail($id);
+
+    $imageable = $photo;
+
+    return $imageable;
 });
