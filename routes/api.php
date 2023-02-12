@@ -48,3 +48,19 @@ Route::get('/read/{id}', function ($id) {
     };
 
 });
+
+Route::get('user/{user_id}/update/{post_id}', function($user_id, $post_id){
+    $user = User::find($user_id);
+
+    // whereId('id', '=', 2)
+    $user->posts()->whereId($post_id)->update(["title" => "Updated at: ". now()]);
+});
+
+Route::get('/delete/{id}/{post_id}', function($id, $post_id){
+    $user = User::find($id);
+
+    $user->posts()->whereId($post_id)->delete();
+
+    // remove everything
+    $user->posts()->delete();
+});
