@@ -29,3 +29,22 @@ Route::get('/create/{id}', function($id){
     $user->posts()->save($post);
     // $user->posts()->save(new Post(['title'=> "title", "body" => "This is a body"]));
 });
+
+
+Route::get('/read/{id}', function ($id) {
+    $user = User::findOrFail($id);
+
+    // return array of it
+    // return $user->posts;
+
+    // collection
+    // dd($user->posts);
+
+        // object
+    // dd($user);
+
+    foreach($user->posts as $post){
+        echo $post;
+    };
+
+});
