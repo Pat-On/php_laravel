@@ -72,3 +72,30 @@ Route::get('/delete/{id}', function($id){
         $role->where('name', '=', 'Administrator')->delete();
     }
 });
+
+// this one is creating more record in DB, so you need to check if you already created attachment
+Route::get('/attach/{id}', function($id){
+    $user = User::findOrFail($id);
+
+    $user->roles()->attach(3);
+
+});
+
+// if you have multiple references it is detaching every single of them
+// without id it would detached everything
+Route::get('/detach/{id}', function($id){
+    $user = User::findOrFail($id);
+
+    $user->roles()->detach(3);
+
+});
+
+
+Route::get("/sync/{id}", function($id) {
+    $user = User::findOrFail($id);
+
+    // it would get array of ids and if does not exist it would delete the rest
+    // it is like attach and detach in one :>
+    $user->roles()->sync([3, 4, 5]);
+
+});
