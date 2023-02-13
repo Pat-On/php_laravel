@@ -11,7 +11,8 @@ class Product extends Model
 
     protected $fillable = ['name'];
 
-    public function photos(){
+    public function photos()
+    {
         return $this->morphMany('App\Models\Photo', 'imageable');
     }
 }

@@ -9,10 +9,10 @@ class Photo extends Model
 {
     use HasFactory;
 
-    protected $filable = ["path"];
+    protected $fillable = ['path'];
 
-
-    public function imagable(){
+    public function imagable()
+    {
         return $this->morphTo();
     }
 }
