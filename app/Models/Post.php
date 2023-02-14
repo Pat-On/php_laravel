@@ -11,7 +11,8 @@ class Post extends Model
 
     protected $fillable = ['name'];
 
-    public function tags(){
+    public function tags()
+    {
         return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 }
