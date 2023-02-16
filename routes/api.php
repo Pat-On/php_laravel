@@ -1,11 +1,5 @@
 <?php
 
-use App\Models\Country;
-use App\Models\Photo;
-use App\Models\Video;
-use App\Models\Tag;
-use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
