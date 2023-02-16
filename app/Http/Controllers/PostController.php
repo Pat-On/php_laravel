@@ -27,6 +27,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('posts.create');
     }
 
     /**
@@ -37,7 +38,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // receiving post super global values
+        return $request->all();
     }
 
     /**
@@ -70,7 +72,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, 
+    $id)
     {
         //
     }
