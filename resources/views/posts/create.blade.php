@@ -3,14 +3,18 @@
 @section('content')
 
     <h1>Create Post</h1>
+    <!-- You can use as well 'url' => '/post'-->
+    {!! Form::open(['method'=> "POST", 'action'  => 'App\Http\Controllers\PostController@store']) !!}
+        {{-- @csrf  --}}
+        <div class="form-group">
+            {!! Form::label('title', 'Our Title') !!}
+            {!! Form::text('title', null, ['class' => 'form-conmtroll']) !!}
+        </div>
 
-    <form method="post" action="/posts">
-        <!-- PAGE EXPIRED WITHOUT @CSRF ANNOYING!!! -->
-        @csrf 
-        <input type="text" name="title" placeholder="Enter title">
-        <input type="submit" name="submit">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-    </form>
+        <div>
+            {!! Form::submit('Create Post', ['class'=> 'btn btn-primary']) !!}
+        </div>
+    {!! Form::close() !!}
 
 @endsection
 
