@@ -99,7 +99,10 @@ class PostController extends Controller
     public function update(Request $request,
     $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->update($request->all());
+
+        return redirect('/posts');
     }
 
     /**
@@ -110,7 +113,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        // Post::whereId($id)->delete();
+
+        $post->delete();
+
+        return redirect('/posts');
     }
 
     // CUSTOM CONTROLLER
