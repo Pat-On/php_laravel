@@ -16,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/posts', PostController::class);
+
+
+Route::group(['middleware'=> 'web'], function(){
+    Route::resource('/posts', PostController::class);
+});

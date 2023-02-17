@@ -48,6 +48,8 @@ class PostController extends Controller
             // rules
             'title'=>'required|max:50'
 
+
+            // all errors are saved in the $error variable
             // more complex - use request
 
         ]);
