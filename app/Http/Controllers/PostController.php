@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreatePostRequest ;
 
 // php artisan make:controller --resource PostController2
 
@@ -39,24 +41,20 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         // receiving post super global values
         // return $request->all();
         // validation
-        $this->validate($request, [
-            // rules
-            'title'=>'required|max:50'
+        // $this->validate($request, [
+        //     // rules
+        //     'title'=>'required|max:50'
 
 
-            // all errors are saved in the $error variable
-            // more complex - use request
+        //     // all errors are saved in the $error variable
+        //     // more complex - use request
 
-        ]);
-
-
-
-
+        // ]);
 
         // 1st way
         Post::create($request->all());
