@@ -18,10 +18,10 @@ return new class extends Migration
         // dependency injection
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->nullable()->unsigned();
             $table->string('title');
-            $table->string('post_image');
-            $table->text('body');
+            $table->string('post_image')->nullable();
+            $table->text('body')->nullable();
             $table->timestamps();
         });
     }

@@ -14,10 +14,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
         //
-        return 'it is working'.$id;
+        $posts = Post::all();
+
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -45,6 +47,8 @@ class PostController extends Controller
         // 1st way
         Post::create($request->all());
 
+        return redirect('/posts');
+
         // 2nd way
         // $input = $request->all();
         // $input['title'] = $request->title;
@@ -65,7 +69,9 @@ class PostController extends Controller
     public function show($id)
     {
         //
-        return 'This is show method';
+        $post = Post::findOrFail($id);
+
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -77,6 +83,10 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+
+        $post = Post::findOrFail($id);
+
+        return view('posts.edit', compact('post'));
     }
 
     /**

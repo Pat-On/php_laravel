@@ -2,17 +2,16 @@
 
 @section('content')
 
-<form method="post" action="/posts">
-    <!-- PAGE EXPIRED WITHOUT @CSRF ANNOYING!!! -->
-    @csrf 
-    <input type="text" name="title" placeholder="Enter title">
-    <input type="submit" name="submit">
-</form>
+    <h1>Create Post</h1>
 
+    <form method="post" action="/posts">
+        <!-- PAGE EXPIRED WITHOUT @CSRF ANNOYING!!! -->
+        @csrf 
+        <input type="text" name="title" placeholder="Enter title">
+        <input type="submit" name="submit">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+    </form>
 
+@endsection
 
-
-
-
-
-@yield('footer')
+<!-- @yield('footer') -->
