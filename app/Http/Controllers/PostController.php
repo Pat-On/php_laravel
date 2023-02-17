@@ -43,6 +43,18 @@ class PostController extends Controller
     {
         // receiving post super global values
         // return $request->all();
+        // validation
+        $this->validate($request, [
+            // rules
+            'title'=>'required|max:50'
+
+            // more complex - use request
+
+        ]);
+
+
+
+
 
         // 1st way
         Post::create($request->all());
