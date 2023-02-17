@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 // php artisan make:controller --resource PostController2
@@ -39,7 +40,20 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // receiving post super global values
-        return $request->all();
+        // return $request->all();
+
+        // 1st way
+        Post::create($request->all());
+
+        // 2nd way
+        // $input = $request->all();
+        // $input['title'] = $request->title;
+        // Post::create($request->all());
+
+        // 3rd way
+        // $post = new Post;
+        // $post->title = $request->title;
+        // $post->save();
     }
 
     /**

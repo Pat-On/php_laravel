@@ -20,7 +20,8 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('title');
-            $table->text('content');
+            $table->string('post_image');
+            $table->text('body');
             $table->timestamps();
         });
     }
