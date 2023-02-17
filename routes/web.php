@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Carbon;
+use App\Models\User;
 
 // use App\Http\Controllers as C; https://www.udemy.com/course/php-with-laravel-for-beginners-become-a-master-in-laravel/learn/lecture/22307374#questions/14999442
 
@@ -36,6 +37,15 @@ Route::group(['middleware'=> 'web'], function(){
         echo Carbon::now()->addDays(10)->diffForHumans();
         echo '<br/>';
         echo Carbon::now()->subMonths(5)->diffForHumans();
+
+    });
+
+
+
+    Route::get('/getname', function(){
+        $user = User::find(1);
+
+        echo $user->name;
 
     });
 });

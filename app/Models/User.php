@@ -53,4 +53,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Post');
     }
+
+
+    // accessors - get<NameOfTheColumn>Attribute
+    public function getNameAttribute($value){
+        return ucfirst($value) . " " . "Added val";
+    }
 }
