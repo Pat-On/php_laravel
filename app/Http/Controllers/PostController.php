@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePostRequest;
 use App\Models\Post;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreatePostRequest ;
 
 // php artisan make:controller --resource PostController2
 
@@ -49,7 +49,6 @@ class PostController extends Controller
         // $this->validate($request, [
         //     // rules
         //     'title'=>'required|max:50'
-
 
         //     // all errors are saved in the $error variable
         //     // more complex - use request

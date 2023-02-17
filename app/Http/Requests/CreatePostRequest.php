@@ -25,7 +25,7 @@ class CreatePostRequest extends FormRequest
     {
         return [
             //
-            'title'=>'required|max:50'
+            'title' => 'required|max:50',
         ];
     }
 }

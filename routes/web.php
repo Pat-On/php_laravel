@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Carbon;
 use App\Models\User;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Route;
 
 // use App\Http\Controllers as C; https://www.udemy.com/course/php-with-laravel-for-beginners-become-a-master-in-laravel/learn/lecture/22307374#questions/14999442
 
@@ -18,12 +18,10 @@ use App\Models\User;
 |
 */
 
-
-
-Route::group(['middleware'=> 'web'], function(){
+Route::group(['middleware' => 'web'], function () {
     Route::resource('/posts', PostController::class);
 
-    Route::get('/dates', function(){
+    Route::get('/dates', function () {
         // carbon
 
         $date = new DateTime('+1 week');
@@ -37,15 +35,19 @@ Route::group(['middleware'=> 'web'], function(){
         echo Carbon::now()->addDays(10)->diffForHumans();
         echo '<br/>';
         echo Carbon::now()->subMonths(5)->diffForHumans();
-
     });
 
-
-
-    Route::get('/getname', function(){
+    Route::get('/getname', function () {
         $user = User::find(1);
 
         echo $user->name;
+    });
 
+    Route::Get('/setname', function(){
+        $user = User::find(1);
+
+        $user->name = "william";
+
+        $user->save();
     });
 });
