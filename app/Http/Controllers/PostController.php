@@ -18,10 +18,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        $posts = Post::all();
+        // Query Scope
+        $posts = Post::list();
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts')); 
+
+
+
+
+        // $posts = Post::all();
+
+        // return view('posts.index', compact('posts'));
     }
 
     /**

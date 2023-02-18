@@ -31,6 +31,16 @@ class Post extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+
+    // Query Scope
+    // do not use the names that are built into laravel
+    // latest is not overwritten
+    public static function scopeList($query){
+        return $query->orderBy('id', 'asc')->get();
+    }
+
+
+
     // // polymorphic relationship
     // public function photos()
     // {
