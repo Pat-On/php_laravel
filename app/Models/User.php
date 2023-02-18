@@ -61,9 +61,8 @@ class User extends Authenticatable
     }
 
     // mutator - before we are going to send data to db
-    public function setNameAttribute($value){
-  
+    public function setNameAttribute($value)
+    {
         $this->attributes['name'] = strtoupper($value);
-
     }
 }

@@ -43,10 +43,10 @@ Route::group(['middleware' => 'web'], function () {
         echo $user->name;
     });
 
-    Route::Get('/setname', function(){
+    Route::Get('/setname', function () {
         $user = User::find(1);
 
-        $user->name = "william";
+        $user->name = 'william';
 
         $user->save();
     });

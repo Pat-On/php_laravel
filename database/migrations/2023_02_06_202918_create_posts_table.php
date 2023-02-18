@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('post_image')->nullable();
             $table->text('body')->nullable();
+            $table->string('path');
             $table->timestamps();
         });
     }

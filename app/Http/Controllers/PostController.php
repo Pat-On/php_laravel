@@ -21,10 +21,7 @@ class PostController extends Controller
         // Query Scope
         $posts = Post::list();
 
-        return view('posts.index', compact('posts')); 
-
-
-
+        return view('posts.index', compact('posts'));
 
         // $posts = Post::all();
 
@@ -50,6 +47,25 @@ class PostController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
+        $input = $request->all();
+
+        if ($file = $request->file('file')) {
+            $name = $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            $input['path'] = $name;
+        }
+
+        Post::create($input);
+
+        // path with a temp name
+        // $file = $request->file('file');
+
+        // example of methods
+        // echo "<br/>";
+        // echo $file->getClientOriginalName();
+
         // receiving post super global values
         // return $request->all();
         // validation
@@ -63,9 +79,9 @@ class PostController extends Controller
         // ]);
 
         // 1st way
-        Post::create($request->all());
+        // Post::create($request->all());
 
-        return redirect('/posts');
+        // return redirect('/posts');
 
         // 2nd way
         // $input = $request->all();

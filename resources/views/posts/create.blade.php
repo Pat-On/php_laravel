@@ -4,7 +4,14 @@
 
     <h1>Create Post</h1>
     <!-- You can use as well 'url' => '/post'-->
-    {!! Form::open(['method'=> "POST", 'action'  => 'App\Http\Controllers\PostController@store']) !!}
+    {!! Form::open(['method'=> "POST", 'action'  => 'App\Http\Controllers\PostController@store', 'files' => true]) !!}
+
+        <div class="form-group">
+            {!! Form::file('file', ['class'=> 'form-control']) !!}
+        </div>
+
+
+
         {{-- @csrf  --}}
         <div class="form-group">
             {!! Form::label('title', 'Our Title') !!}
