@@ -23,6 +23,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(7, 11),
             'post_image' => $this->faker->imageUrl('900', '300'),
             'body' => $this->faker->paragraphs(rand(10, 15), true),
+            'path' => ""
         ];
     }
 
