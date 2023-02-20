@@ -1,0 +1,1 @@
+<h1>I am component 1.blade.php</h1>

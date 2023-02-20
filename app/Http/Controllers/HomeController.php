@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        // passing data to view
+
+        $users = User::all();
+
+
+
+        return view('welcome', [
+            'users' => $users
+        ]);
     }
 }
